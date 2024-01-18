@@ -1,4 +1,4 @@
-﻿using Hardware.Contract.Enums;
+﻿using Hardware.Contract.Types;
 
 namespace Hardware.Contract.Exceptions;
 
