@@ -13,6 +13,7 @@ internal class Watchdog : IWatchdog, ISetWatchdogTime, IControlWatchdog
 
     public Watchdog()
     {
+        _timer.Interval = 100;
         _timer.AutoReset = true;
     }
 
@@ -27,7 +28,7 @@ internal class Watchdog : IWatchdog, ISetWatchdogTime, IControlWatchdog
     }
 
 
-    public IWatchdog SetWatchdogTime(double time)
+    public IWatchdog SetWatchdogTime(double time = 100)
     {
         _timer.Interval = time;
         return this;
