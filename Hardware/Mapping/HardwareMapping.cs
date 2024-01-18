@@ -2,6 +2,8 @@
 using Autofac.Core;
 using Hardware.Components;
 using Hardware.Contract.Interfaces.Components;
+using Hardware.Contract.Interfaces.Components.Watchdog;
+using Hardware.Functiongroups;
 
 namespace Hardware.Mapping;
 
@@ -14,6 +16,7 @@ public class HardwareMapping : Module
         RegisterSensor(builder);
         RegisterEngine(builder);
         RegisterDebounce(builder);
+        RegisterWatchdog(builder);
     }
 
 
@@ -53,5 +56,14 @@ public class HardwareMapping : Module
     protected virtual void RegisterDebounce(ContainerBuilder builder)
     {
         builder.RegisterType<Debounce>().As<IDebounce>().InstancePerDependency();
+    }
+
+
+    protected void RegisterWatchdog(ContainerBuilder builder)
+    {
+        builder.RegisterType<Watchdog>()
+            .As<ISetWatchdogTime>()
+            .As<IWatchdog>()
+            .InstancePerDependency();
     }
 }
