@@ -1,4 +1,4 @@
-﻿namespace Hardware.Contract.Enums;
+﻿namespace Hardware.Contract.Types;
 
 public enum LockedState
 {
