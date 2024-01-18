@@ -1,5 +1,5 @@
-﻿using Hardware.Contract.Enums;
-using Hardware.Contract.Interfaces.Components;
+﻿using Hardware.Contract.Interfaces.Components;
+using Hardware.Contract.Types;
 
 namespace Hardware.Contract.Interfaces.Functiongroups;
 
