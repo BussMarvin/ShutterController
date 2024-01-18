@@ -1,7 +1,6 @@
 ﻿namespace Hardware.Contract.Interfaces.Components;
 
-public interface IDebounce
+public interface IDebounce: IOccupied
 {
     public bool OldStateWasOccupied { get; }
-    bool IsOccupied();
 }
