@@ -31,4 +31,10 @@ internal class HardwareUnitTestMapping : HardwareMapping
     {
         RegisterEngine(builder, RelayLeftGpio.Object, RelayRightGpio.Object);
     }
+
+
+    protected override void RegisterFunctiongroups(ContainerBuilder builder)
+    {
+        RegisterFunctiongroupHb(builder);
+    }
 }
