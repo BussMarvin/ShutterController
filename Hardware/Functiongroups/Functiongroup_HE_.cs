@@ -1,8 +1,8 @@
 ﻿using Database.Contract.DataModels;
-using Hardware.Contract.Enums;
 using Hardware.Contract.Exceptions;
 using Hardware.Contract.Interfaces.Components;
 using Hardware.Contract.Interfaces.Functiongroups;
+using Hardware.Contract.Types;
 
 namespace Hardware.Functiongroups;
 
