@@ -19,7 +19,7 @@ internal class Sensor : ISensor, IInvertSignal, ISetDescription<ISensor, Equipme
 
 
         // Call the Method IsOccupied() to set the OldStateWasOccupied Property
-        IsOccupied();
+        //IsOccupied();
     }
 
     public Equipment_DataModel Description { get; private set; }

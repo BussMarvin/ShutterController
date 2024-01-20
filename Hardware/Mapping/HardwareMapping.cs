@@ -3,11 +3,12 @@ using Autofac.Core;
 using Hardware.Components;
 using Hardware.Contract.Interfaces.Components;
 using Hardware.Contract.Interfaces.Components.Watchdog;
+using Hardware.Contract.Interfaces.Functiongroups;
 using Hardware.Functiongroups;
 
 namespace Hardware.Mapping;
 
-public class HardwareMapping : Module
+public partial class HardwareMapping : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
@@ -17,6 +18,9 @@ public class HardwareMapping : Module
         RegisterEngine(builder);
         RegisterDebounce(builder);
         RegisterWatchdog(builder);
+
+        RegisterFunctiongroups(builder);
+
     }
 
 
@@ -66,4 +70,29 @@ public class HardwareMapping : Module
             .As<IWatchdog>()
             .InstancePerDependency();
     }
+
+
+    protected virtual void RegisterFunctiongroups(ContainerBuilder builder)
+    {
+
+    }
+
+
+
+    protected virtual void RegisterFunctiongroupHb(ContainerBuilder builder)
+    {
+        builder.RegisterType<Functiongroup_Hb>()
+            .As<IFunctiongroup_Hb>()
+            .InstancePerDependency();
+    }
+
+
+    protected virtual void RegisterFunctiongroupHb(ContainerBuilder builder, string functiongroupKey)
+    {
+        builder
+            .RegisterType<Functiongroup_Hb>()
+            .Keyed<IFunctiongroup_Hb>(functiongroupKey)
+            .InstancePerDependency();
+    }
+
 }
