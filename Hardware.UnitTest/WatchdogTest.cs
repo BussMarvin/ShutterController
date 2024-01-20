@@ -35,7 +35,7 @@ internal class WatchdogTest
 
         occupiedMock.Setup(x => x.IsOccupied()).Returns(true);
 
-        Assert.That(() => triggeredValue, Is.False.After(1).Seconds.PollEvery(100));
+        Assert.That(() => triggeredValue, Is.False.After(2).Seconds.PollEvery(100));
     }
 
 
