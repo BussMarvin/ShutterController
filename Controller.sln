@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hardware", "Hardware\Hardwa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hardware.Contract", "Hardware.Contract\Hardware.Contract.csproj", "{6057ED13-9EE0-4A63-AFF0-FE6F84F2FDE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hardware.UnitTest", "Hardware.UnitTest\Hardware.UnitTest.csproj", "{B51A03BE-C5A4-43ED-9AC3-394B975EA53D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hardware.UnitTest", "Hardware.UnitTest\Hardware.UnitTest.csproj", "{B51A03BE-C5A4-43ED-9AC3-394B975EA53D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller.Contract", "Controller.Contract\Controller.Contract.csproj", "{940351AA-55CA-431F-8195-42C355D29607}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{B51A03BE-C5A4-43ED-9AC3-394B975EA53D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B51A03BE-C5A4-43ED-9AC3-394B975EA53D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B51A03BE-C5A4-43ED-9AC3-394B975EA53D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{940351AA-55CA-431F-8195-42C355D29607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{940351AA-55CA-431F-8195-42C355D29607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{940351AA-55CA-431F-8195-42C355D29607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{940351AA-55CA-431F-8195-42C355D29607}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
