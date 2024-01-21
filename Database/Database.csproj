@@ -1,17 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Bootstrapper.Contract_MB" Version="1.1.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Bootstrapper.Contract_MB" Version="1.1.0" />
+		<PackageReference Include="Configuration.Contract_MB" Version="1.0.2" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Database.Contract\Database.Contract.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Controller.Contract\Controller.Contract.csproj" />
+		<ProjectReference Include="..\Database.Contract\Database.Contract.csproj" />
+	</ItemGroup>
 
 </Project>
