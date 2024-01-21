@@ -40,6 +40,15 @@ public partial class HardwareMapping : Module
         builder.RegisterType<Sensor>().As<ISensor>().InstancePerDependency();
     }
 
+    protected virtual void RegisterSensor(ContainerBuilder builder, IGpio gpio, string mappingKey)
+    {
+        builder.RegisterType<Sensor>()
+            .WithParameter(new TypedParameter(typeof(IGpio),gpio))
+            .Keyed<ISensor>(mappingKey)
+            .SingleInstance();
+    }
+
+
     protected virtual void RegisterEngine(ContainerBuilder builder)
     {
         builder.RegisterType<Engine>().As<IEngine>().InstancePerDependency();
@@ -92,6 +101,36 @@ public partial class HardwareMapping : Module
         builder
             .RegisterType<Functiongroup_Hb>()
             .Keyed<IFunctiongroup_Hb>(functiongroupKey)
+            .InstancePerDependency();
+    }
+
+
+    protected virtual void RegisterFunctiongroupHe(ContainerBuilder builder, string mappingKeyBg11, string mappingKeyBg21)
+    {
+        builder.RegisterType<Functiongroup_He>()
+            .WithParameter(new ResolvedParameter(
+                (pi, _) => pi.ParameterType == typeof(ISensor) && pi.Name.Contains("bg11"),
+                (_, ctx) => ctx.ResolveKeyed<ISensor>(mappingKeyBg11)))
+            .WithParameter(new ResolvedParameter(
+                (pi, _) => pi.ParameterType == typeof(ISensor) && pi.Name.Contains("bg21"),
+                (_, ctx) => ctx.ResolveKeyed<ISensor>(mappingKeyBg21)))
+            .As<IFunctiongroup_He>()
+            .InstancePerDependency();
+    }
+
+    protected virtual void RegisterFunctiongroupHe(ContainerBuilder builder)
+    {
+        builder.RegisterType<Functiongroup_He>()
+            .As<IFunctiongroup_He>()
+            .InstancePerDependency();
+    }
+
+
+    protected virtual void RegisterFunctiongroupHe(ContainerBuilder builder, string functiongroupKey)
+    {
+        builder
+            .RegisterType<Functiongroup_Hb>()
+            .Keyed<IFunctiongroup_He>(functiongroupKey)
             .InstancePerDependency();
     }
 
