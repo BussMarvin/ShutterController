@@ -10,12 +10,14 @@ namespace Hardware.UnitTest.Functiongroups;
 
 internal class Functiongroup_HbTest
 {
-    private readonly HardwareUnitTestMapping _hardwareMapping = new();
     private IContainer _container;
+    private HardwareUnitTestMapping _hardwareMapping = new();
 
     [SetUp]
     public void Setup()
     {
+        _hardwareMapping = new HardwareUnitTestMapping();
+
         ContainerBuilder builder = new();
         builder.RegisterModule(_hardwareMapping);
         _container = builder.Build();
@@ -125,5 +127,11 @@ internal class Functiongroup_HbTest
         gpioMock.Setup(x => x.ReadPinState()).Returns(false);
 
         Assert.That(() => triggeredValue, Is.EqualTo(1).After(2).Seconds.PollEvery(100));
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        _container.Dispose();
     }
 }
