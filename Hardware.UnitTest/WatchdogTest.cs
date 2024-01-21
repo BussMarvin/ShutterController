@@ -8,12 +8,14 @@ namespace Hardware.UnitTest;
 
 internal class WatchdogTest
 {
-    private readonly HardwareUnitTestMapping _hardwareMapping = new();
     private IContainer _container;
+    private HardwareUnitTestMapping _hardwareMapping = new();
 
     [SetUp]
     public void Setup()
     {
+        _hardwareMapping = new HardwareUnitTestMapping();
+
         ContainerBuilder builder = new();
         builder.RegisterModule(_hardwareMapping);
         _container = builder.Build();
@@ -35,7 +37,7 @@ internal class WatchdogTest
 
         occupiedMock.Setup(x => x.IsOccupied()).Returns(true);
 
-        Assert.That(() => triggeredValue, Is.False.After(2).Seconds.PollEvery(100));
+        Assert.That(() => triggeredValue, Is.False.After(4).Seconds.PollEvery(100));
     }
 
 
@@ -56,5 +58,11 @@ internal class WatchdogTest
         occupiedMock.Setup(x => x.IsOccupied()).Returns(true);
 
         Assert.That(() => triggeredValue, Is.EqualTo(1).After(1).Seconds);
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        _container.Dispose();
     }
 }

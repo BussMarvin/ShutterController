@@ -8,12 +8,13 @@ namespace Hardware.UnitTest;
 
 internal class EngineTest
 {
-    private readonly HardwareUnitTestMapping _hardwareMapping = new();
     private IContainer _container;
+    private HardwareUnitTestMapping _hardwareMapping = new();
 
     [SetUp]
     public void Setup()
     {
+        _hardwareMapping = new HardwareUnitTestMapping();
         ContainerBuilder builder = new();
         builder.RegisterModule(_hardwareMapping);
         _container = builder.Build();
@@ -113,5 +114,11 @@ internal class EngineTest
 
         _hardwareMapping.RelayRightGpio.Verify(x => x.SetPinHigh(), Times.Once);
         _hardwareMapping.RelayRightGpio.Verify(x => x.SetPinLow(), Times.Once);
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        _container.Dispose();
     }
 }
